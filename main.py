@@ -20,7 +20,7 @@ def play(W, H):
     running = True
     dirs = [False, False, False, False]  # Format as [Left, Right, Up, Down]
     speed = 5
-    margin = 5
+    margin = 10
 
     # ---------------- Game Loop
     clock = pygame.time.Clock()
