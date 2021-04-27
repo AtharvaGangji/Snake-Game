@@ -1,5 +1,6 @@
 # --------------------------------------- imports
 import pygame
+import random
 
 
 # --------------------------------------- game function
@@ -12,15 +13,23 @@ def play(W, H):
     BCKGR = (255, 255, 255)
     pygame.display.update()
     fps = 50
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
 
     # ---------------- Game Variables
     running = True
+
     snakeSize = 40
     snakePos = [W/2 - 10, H/2-snakeSize]
-    running = True
-    dirs = [False, False, False, False]  # Format as [Left, Right, Up, Down]
     speed = 5
     margin = 5
+    points = 0
+
+    appleSize = 25
+    applePos = [random.randint(
+                margin, W-margin), random.randint(margin, H-margin)]
+
+    dirs = [False, False, False, False]  # Format as [Left, Right, Up, Down]
 
     # ---------------- Game Loop
     clock = pygame.time.Clock()
@@ -79,8 +88,18 @@ def play(W, H):
                 snakePos[1] = 0
 
         window.fill(BCKGR)
-        pygame.draw.rect(window, (255, 0, 0),
-                         pygame.Rect(snakePos[0], snakePos[1], snakeSize, snakeSize))
+        pygame.draw.rect(window, GREEN, pygame.Rect(
+            snakePos[0], snakePos[1], snakeSize, snakeSize))
+        pygame.draw.rect(window, RED, pygame.Rect(
+            applePos[0], applePos[1], appleSize, appleSize))
+
+        if pygame.Rect(snakePos[0], snakePos[1], snakeSize, snakeSize).colliderect(pygame.Rect(applePos[0], applePos[1], appleSize, appleSize)):
+            applePos = [random.randint(
+                margin, W-margin), random.randint(margin, H-margin)]
+            pygame.draw.rect(window, RED, pygame.Rect(
+                applePos[0], applePos[1], appleSize, appleSize))
+            points += 1
+
         pygame.display.update()
 
 
