@@ -6,7 +6,7 @@ Pygame is a cross-platform set of Python modules designed for writing video game
 
 ## Work in Progress
 
-We are making a snake game with pygame.
+We are making a snake game with `Pygame & Python`.
   - Atharva Gangji
   - tdserapio
   - Lioncat2002
