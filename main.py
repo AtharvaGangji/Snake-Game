@@ -5,7 +5,7 @@ import time
 
 # --------------------------------------- game function
 def play():
-    pygame.init()
+    pygame.init()  # initialized pygame
 
     # ---------------- Game Window
     window = pygame.display.set_mode((500, 500))
@@ -13,8 +13,8 @@ def play():
     pygame.display.update()
 
     # ---------------- variables
-    X = 100
-    Y = 100
+    X = 250
+    Y = 200
     direction = ""
     time_sleep = 0.04
 
@@ -32,6 +32,20 @@ def play():
     running = True
 
     while running:
+
+        # ---------------- border thing
+        if X >= 501:
+            X = 0
+            direction = "RIGHT"  # direction to right
+        elif X <= 1:
+            X = 500
+            direction = "LEFT"  # direction to left
+        if Y >= 501:
+            Y = 0
+            direction = "DOWN"  # direction to down
+        elif Y <= 1:
+            Y = 500
+            direction = "UP"  # direction to up
 
         # ---------------- Move snake in some direction
         if direction == "UP":
